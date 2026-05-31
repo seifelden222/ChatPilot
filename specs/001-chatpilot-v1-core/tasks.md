@@ -104,18 +104,18 @@
 **Pest tests**: `tests/Feature/Webhooks/FakeWebhookIngestionTest.php`, `tests/Feature/Webhooks/WebhookDeduplicationTest.php`, `tests/Feature/Webhooks/InteractionCreationPipelineTest.php`, `tests/Unit/Services/SocialIntegrationServiceNormalizationTest.php`  
 **Verification commands**: `php artisan test --compact --filter=FakeWebhookIngestionTest`, `php artisan test --compact --filter=WebhookDeduplicationTest`, `php artisan test --compact --filter=SocialIntegrationServiceNormalizationTest`, `vendor/bin/pint --dirty --format agent`
 
-- [ ] T045 [US1] Create branch `feature/v1-04-webhook-pipeline` for webhook pipeline files in app/Http/Controllers/
-- [ ] T046 [US1] Add fake webhook route contract in routes/api.php
-- [ ] T047 [US1] Implement thin webhook controller in app/Http/Controllers/FakeWebhookController.php
-- [ ] T048 [US1] Implement queue-first webhook processing job in app/Jobs/ProcessWebhookEventJob.php
-- [ ] T049 [US1] Implement fake provider normalization inside app/Services/SocialIntegrationService.php
-- [ ] T050 [US1] Implement interaction upsert orchestration in app/Services/InteractionService.php
-- [ ] T051 [US1] Add InteractionCreated event in app/Events/InteractionCreated.php
-- [ ] T052 [P] [US1] Add ingestion feature tests in tests/Feature/Webhooks/FakeWebhookIngestionTest.php
-- [ ] T053 [P] [US1] Add deduplication tests in tests/Feature/Webhooks/WebhookDeduplicationTest.php
-- [ ] T054 [P] [US1] Add interaction pipeline tests in tests/Feature/Webhooks/InteractionCreationPipelineTest.php
-- [ ] T055 [P] [US1] Add normalization unit tests in tests/Unit/Services/SocialIntegrationServiceNormalizationTest.php
-- [ ] T056 [US1] Run verification commands for webhook group in specs/001-chatpilot-v1-core/quickstart.md
+- [x] T045 [US1] Create branch `feature/v1-04-webhook-pipeline` for webhook pipeline files in app/Http/Controllers/
+- [x] T046 [US1] Add fake webhook route contract in routes/api.php
+- [x] T047 [US1] Implement thin webhook controller in app/Http/Controllers/FakeWebhookController.php
+- [x] T048 [US1] Implement queue-first webhook processing job in app/Jobs/ProcessWebhookEventJob.php
+- [x] T049 [US1] Implement fake provider normalization inside app/Services/SocialIntegrationService.php
+- [x] T050 [US1] Implement interaction upsert orchestration in app/Services/InteractionService.php
+- [x] T051 [US1] Add InteractionCreated event in app/Events/InteractionCreated.php
+- [x] T052 [P] [US1] Add ingestion feature tests in tests/Feature/Webhooks/FakeWebhookIngestionTest.php
+- [x] T053 [P] [US1] Add deduplication tests in tests/Feature/Webhooks/WebhookDeduplicationTest.php
+- [x] T054 [P] [US1] Add interaction pipeline tests in tests/Feature/Webhooks/InteractionCreationPipelineTest.php
+- [x] T055 [P] [US1] Add normalization unit tests in tests/Unit/Services/SocialIntegrationServiceNormalizationTest.php
+- [x] T056 [US1] Run verification commands for webhook group in specs/001-chatpilot-v1-core/quickstart.md
 - [ ] T057 [US1] Commit webhook group for app/Http/Controllers/, app/Jobs/, app/Services/, tests/Feature/Webhooks/
 - [ ] T058 [US1] Push branch `feature/v1-04-webhook-pipeline` after tests pass in specs/001-chatpilot-v1-core/tasks.md
 
