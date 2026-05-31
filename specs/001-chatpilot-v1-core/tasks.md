@@ -72,20 +72,20 @@
 **Pest tests**: `tests/Unit/Models/CoreModelRelationshipTest.php`, `tests/Unit/Models/CoreModelCastsTest.php`  
 **Verification commands**: `php artisan test --compact --filter=CoreModelRelationshipTest`, `php artisan test --compact --filter=CoreModelCastsTest`, `vendor/bin/pint --dirty --format agent`
 
-- [ ] T031 Create branch `feature/v1-03-models-observers` for model layer updates in app/Models/
-- [ ] T032 Create workspace-channel-actor model classes in app/Models/Workspace.php
-- [ ] T033 [P] Create identity-content-thread model classes in app/Models/Thread.php
-- [ ] T034 Create interaction model with casts and scopes in app/Models/Interaction.php
-- [ ] T035 [P] Create automation core model classes in app/Models/AutomationStep.php
-- [ ] T036 [P] Create automation run and outgoing action model classes in app/Models/OutgoingAction.php
-- [ ] T037 [P] Create webhook event and tag model classes in app/Models/WebhookEvent.php
-- [ ] T038 Create lightweight observers in app/Observers/WebhookEventObserver.php
-- [ ] T039 Register observers in app/Providers/AppServiceProvider.php
-- [ ] T040 Add relationship tests in tests/Unit/Models/CoreModelRelationshipTest.php
-- [ ] T041 Add cast/state tests in tests/Unit/Models/CoreModelCastsTest.php
-- [ ] T042 Run verification commands for phase in specs/001-chatpilot-v1-core/quickstart.md
-- [ ] T043 Commit model group for app/Models/, app/Observers/, and tests/Unit/Models/
-- [ ] T044 Push branch `feature/v1-03-models-observers` after tests pass in specs/001-chatpilot-v1-core/tasks.md
+- [x] T031 Create branch `feature/v1-03-models-observers` for model layer updates in app/Models/
+- [x] T032 Create workspace-channel-actor model classes in app/Models/Workspace.php
+- [x] T033 [P] Create identity-content-thread model classes in app/Models/Thread.php
+- [x] T034 Create interaction model with casts and scopes in app/Models/Interaction.php
+- [x] T035 [P] Create automation core model classes in app/Models/AutomationStep.php
+- [x] T036 [P] Create automation run and outgoing action model classes in app/Models/OutgoingAction.php
+- [x] T037 [P] Create webhook event and tag model classes in app/Models/WebhookEvent.php
+- [x] T038 Create lightweight observers in app/Observers/WebhookEventObserver.php
+- [x] T039 Register observers in app/Providers/AppServiceProvider.php
+- [x] T040 Add relationship tests in tests/Unit/Models/CoreModelRelationshipTest.php
+- [x] T041 Add cast/state tests in tests/Unit/Models/CoreModelCastsTest.php
+- [x] T042 Run verification commands for phase in specs/001-chatpilot-v1-core/quickstart.md
+- [x] T043 Commit model group for app/Models/, app/Observers/, and tests/Unit/Models/
+- [x] T044 Push branch `feature/v1-03-models-observers` after tests pass in specs/001-chatpilot-v1-core/tasks.md
 
 **Checkpoint**: Foundation ready; user story work can proceed.
 
