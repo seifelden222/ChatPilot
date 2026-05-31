@@ -50,20 +50,20 @@
 **Pest tests**: `tests/Feature/Database/CoreSchemaTest.php`  
 **Verification commands**: `php artisan test --compact --filter=CoreSchemaTest`, `php artisan migrate:fresh --env=testing`, `vendor/bin/pint --dirty --format agent`
 
-- [ ] T017 Create branch `feature/v1-02-database-schema` for migration work in database/migrations/
-- [ ] T018 Create workspace and channel migrations in database/migrations/*_create_workspaces_table.php
-- [ ] T019 [P] Create actor and identity migrations in database/migrations/*_create_actor_identities_table.php
-- [ ] T020 [P] Create content and thread migrations in database/migrations/*_create_threads_table.php
-- [ ] T021 Create interaction migration with uniqueness and indexes in database/migrations/*_create_interactions_table.php
-- [ ] T022 [P] Create automation core migrations in database/migrations/*_create_automation_steps_table.php
-- [ ] T023 [P] Create automation run and run step migrations in database/migrations/*_create_automation_run_steps_table.php
-- [ ] T024 [P] Create outgoing action migration in database/migrations/*_create_outgoing_actions_table.php
-- [ ] T025 [P] Create webhook event migration in database/migrations/*_create_webhook_events_table.php
-- [ ] T026 [P] Create tags migration in database/migrations/*_create_tags_table.php
-- [ ] T027 Add schema/index/constraint assertions in tests/Feature/Database/CoreSchemaTest.php
-- [ ] T028 Run verification commands for phase in specs/001-chatpilot-v1-core/quickstart.md
-- [ ] T029 Commit schema group for files in database/migrations/ and tests/Feature/Database/CoreSchemaTest.php
-- [ ] T030 Push branch `feature/v1-02-database-schema` after tests pass in specs/001-chatpilot-v1-core/tasks.md
+- [x] T017 Create branch `feature/v1-02-database-schema` for migration work in database/migrations/
+- [x] T018 Create workspace and channel migrations in database/migrations/*_create_workspaces_table.php
+- [x] T019 [P] Create actor and identity migrations in database/migrations/*_create_actor_identities_table.php
+- [x] T020 [P] Create content and thread migrations in database/migrations/*_create_threads_table.php
+- [x] T021 Create interaction migration with uniqueness and indexes in database/migrations/*_create_interactions_table.php
+- [x] T022 [P] Create automation core migrations in database/migrations/*_create_automation_steps_table.php
+- [x] T023 [P] Create automation run and run step migrations in database/migrations/*_create_automation_run_steps_table.php
+- [x] T024 [P] Create outgoing action migration in database/migrations/*_create_outgoing_actions_table.php
+- [x] T025 [P] Create webhook event migration in database/migrations/*_create_webhook_events_table.php
+- [x] T026 [P] Create tags migration in database/migrations/*_create_tags_table.php
+- [x] T027 Add schema/index/constraint assertions in tests/Feature/Database/CoreSchemaTest.php
+- [x] T028 Run verification commands for phase in specs/001-chatpilot-v1-core/quickstart.md
+- [x] T029 Commit schema group for files in database/migrations/ and tests/Feature/Database/CoreSchemaTest.php
+- [x] T030 Push branch `feature/v1-02-database-schema` after tests pass in specs/001-chatpilot-v1-core/tasks.md
 
 ### Task Group: V1-03 Models and Observers
 
