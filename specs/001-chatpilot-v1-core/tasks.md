@@ -22,22 +22,22 @@
 **Pest tests**: `tests/Unit/Support/NormalizedEventDataTest.php`, `tests/Unit/Support/EnumConventionsTest.php`  
 **Verification commands**: `php artisan test --compact --filter=NormalizedEventDataTest`, `php artisan test --compact --filter=EnumConventionsTest`, `vendor/bin/pint --dirty --format agent`
 
-- [ ] T001 Create branch `feature/v1-01-domain-foundation` for updates in specs/001-chatpilot-v1-core/tasks.md
-- [ ] T002 Create provider-neutral enums in app/Support/Enums/ChannelType.php
-- [ ] T003 [P] Create provider-neutral enums in app/Support/Enums/InteractionDirection.php
-- [ ] T004 [P] Create provider-neutral enums in app/Support/Enums/WebhookEventStatus.php
-- [ ] T005 [P] Create provider-neutral enums in app/Support/Enums/AutomationRunStatus.php
-- [ ] T006 [P] Create provider-neutral enums in app/Support/Enums/OutgoingActionStatus.php
-- [ ] T007 Create DTO for normalized inbound payload in app/Support/DTOs/NormalizedEventData.php
-- [ ] T008 [P] Create service stub for provider-neutral ingestion logic in app/Services/InteractionService.php
-- [ ] T009 [P] Create service stub for automation execution orchestration in app/Services/AutomationRunnerService.php
-- [ ] T010 [P] Create action stub for actor upsert in app/Actions/UpsertActorAction.php
-- [ ] T011 [P] Create action stub for identity upsert in app/Actions/UpsertActorIdentityAction.php
-- [ ] T012 Add unit tests for normalized DTO rules in tests/Unit/Support/NormalizedEventDataTest.php
-- [ ] T013 Add unit tests for enum domain conventions in tests/Unit/Support/EnumConventionsTest.php
-- [ ] T014 Run verification commands for phase in specs/001-chatpilot-v1-core/quickstart.md
-- [ ] T015 Commit group changes for files under app/Support/ and tests/Unit/Support/ in specs/001-chatpilot-v1-core/tasks.md
-- [ ] T016 Push branch `feature/v1-01-domain-foundation` after tests pass in specs/001-chatpilot-v1-core/tasks.md
+- [x] T001 Create branch `feature/v1-01-domain-foundation` for updates in specs/001-chatpilot-v1-core/tasks.md
+- [x] T002 Create provider-neutral enums in app/Support/Enums/ChannelType.php
+- [x] T003 [P] Create provider-neutral enums in app/Support/Enums/InteractionDirection.php
+- [x] T004 [P] Create provider-neutral enums in app/Support/Enums/WebhookEventStatus.php
+- [x] T005 [P] Create provider-neutral enums in app/Support/Enums/AutomationRunStatus.php
+- [x] T006 [P] Create provider-neutral enums in app/Support/Enums/OutgoingActionStatus.php
+- [x] T007 Create DTO for normalized inbound payload in app/Support/DTOs/NormalizedEventData.php
+- [x] T008 [P] Create service stub for provider-neutral ingestion logic in app/Services/InteractionService.php
+- [x] T009 [P] Create service stub for automation execution orchestration in app/Services/AutomationRunnerService.php
+- [x] T010 [P] Create action stub for actor upsert in app/Actions/UpsertActorAction.php
+- [x] T011 [P] Create action stub for identity upsert in app/Actions/UpsertActorIdentityAction.php
+- [x] T012 Add unit tests for normalized DTO rules in tests/Unit/Support/NormalizedEventDataTest.php
+- [x] T013 Add unit tests for enum domain conventions in tests/Unit/Support/EnumConventionsTest.php
+- [x] T014 Run verification commands for phase in specs/001-chatpilot-v1-core/quickstart.md
+- [x] T015 Commit group changes for files under app/Support/ and tests/Unit/Support/ in specs/001-chatpilot-v1-core/tasks.md
+- [x] T016 Push branch `feature/v1-01-domain-foundation` after tests pass in specs/001-chatpilot-v1-core/tasks.md
 
 ---
 
