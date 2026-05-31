@@ -116,8 +116,8 @@
 - [x] T054 [P] [US1] Add interaction pipeline tests in tests/Feature/Webhooks/InteractionCreationPipelineTest.php
 - [x] T055 [P] [US1] Add normalization unit tests in tests/Unit/Services/SocialIntegrationServiceNormalizationTest.php
 - [x] T056 [US1] Run verification commands for webhook group in specs/001-chatpilot-v1-core/quickstart.md
-- [ ] T057 [US1] Commit webhook group for app/Http/Controllers/, app/Jobs/, app/Services/, tests/Feature/Webhooks/
-- [ ] T058 [US1] Push branch `feature/v1-04-webhook-pipeline` after tests pass in specs/001-chatpilot-v1-core/tasks.md
+- [x] T057 [US1] Commit webhook group for app/Http/Controllers/, app/Jobs/, app/Services/, tests/Feature/Webhooks/
+- [x] T058 [US1] Push branch `feature/v1-04-webhook-pipeline` after tests pass in specs/001-chatpilot-v1-core/tasks.md
 
 **Checkpoint**: US1 is independently testable and shippable.
 
