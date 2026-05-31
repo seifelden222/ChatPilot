@@ -18,17 +18,17 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
+**Language/Version**: [e.g., PHP 8.4 (Laravel 13) or NEEDS CLARIFICATION]
 
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
+**Primary Dependencies**: [e.g., Laravel 13, Livewire, Filament, Pest or NEEDS CLARIFICATION]
 
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
+**Storage**: [e.g., MySQL/PostgreSQL with relational-first schema + constrained JSON usage]
 
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]
+**Testing**: [e.g., Pest feature/unit tests for all important core behaviors]
 
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
+**Target Platform**: [e.g., Laravel SaaS web app with queue workers]
 
-**Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]
+**Project Type**: [e.g., Laravel monolith with provider-neutral domain core]
 
 **Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]
 
@@ -40,7 +40,17 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] Laravel-first structure is preserved (thin controllers/Livewire/Filament,
+  business logic in Actions/Services/Jobs/Events/Listeners/Observers/Support)
+- [ ] Provider-neutral domain naming is used; no provider-specific core tables or
+  cross-cutting conditionals outside SocialIntegrationService
+- [ ] Event-driven queue-first flow is designed (webhook storage, async processing,
+  no external API calls from UI/controller layers)
+- [ ] Data model keeps searchable fields as columns; JSON only for flexible
+  provider metadata/payload/config payloads
+- [ ] V1 scope boundaries are respected (fake provider allowed; real provider APIs,
+  visual flow builder, and real billing excluded)
+- [ ] Pest testing strategy covers all important core behaviors
 
 ## Project Structure
 

@@ -98,6 +98,22 @@
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
 - **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
 
+### Constitution Alignment *(mandatory)*
+
+- **CA-001**: Feature MUST preserve Laravel-first architecture with thin
+  controllers/Livewire/Filament layers and business logic in domain/service layers.
+- **CA-002**: Feature MUST use provider-neutral domain names and MUST avoid
+  provider-specific core tables or naming.
+- **CA-003**: If provider-specific behavior is needed in V1, it MUST be contained
+  only in SocialIntegrationService.
+- **CA-004**: Webhook and automation processing MUST follow queue-first,
+  event-driven design where applicable.
+- **CA-005**: Important searchable attributes MUST be modeled as columns; JSON is
+  only for flexible metadata/payload/config fields.
+- **CA-006**: Spec MUST explicitly state which V1 out-of-scope items are excluded
+  (real provider APIs, visual flow builder, real billing) when relevant.
+- **CA-007**: Spec MUST define how important behaviors are validated with Pest.
+
 ### Key Entities *(include if feature involves data)*
 
 - **[Entity 1]**: [What it represents, key attributes without implementation]
