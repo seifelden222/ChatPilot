@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Models\OutgoingAction;
 use App\Models\WebhookEvent;
 use App\Support\DTOs\NormalizedEventData;
 use Carbon\CarbonImmutable;
+use RuntimeException;
 
 class SocialIntegrationService
 {
@@ -43,5 +45,25 @@ class SocialIntegrationService
             payload: $webhookEvent->payload,
             channelKey: (string) ($webhookEvent->channel->external_id ?? $webhookEvent->channel_id),
         );
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function executeOutgoingAction(OutgoingAction $outgoingAction): array
+    {
+        if (data_get($outgoingAction->payload, 'force_fail') === true) {
+            throw new RuntimeException('Fake provider execution failed.');
+        }
+
+        if (! in_array($outgoingAction->action_type, ['send_message', 'send_reply'], true)) {
+            throw new RuntimeException('Unsupported fake provider action type.');
+        }
+
+        return [
+            'provider' => 'fake',
+            'status' => 'sent',
+            'external_message_id' => 'fake_msg_'.$outgoingAction->id,
+        ];
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\InteractionCreated;
+use App\Events\OutgoingActionCreated;
+use App\Listeners\QueueOutgoingActionExecution;
 use App\Listeners\RunAutomationsForInteraction;
 use App\Models\WebhookEvent;
 use App\Observers\WebhookEventObserver;
@@ -32,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
 
         WebhookEvent::observe(WebhookEventObserver::class);
         Event::listen(InteractionCreated::class, RunAutomationsForInteraction::class);
+        Event::listen(OutgoingActionCreated::class, QueueOutgoingActionExecution::class);
     }
 
     /**

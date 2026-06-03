@@ -16,10 +16,7 @@ use Illuminate\Support\Facades\Event;
 it('processes queued webhook into normalized interaction records', function () {
     Event::fake([InteractionCreated::class]);
 
-    $workspace = Workspace::query()->create([
-        'name' => 'Acme',
-        'slug' => 'acme',
-    ]);
+    $workspace = Workspace::factory()->create();
 
     $channel = Channel::query()->create([
         'workspace_id' => $workspace->id,

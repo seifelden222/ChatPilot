@@ -8,10 +8,7 @@ use Illuminate\Support\Facades\Queue;
 it('accepts valid webhook payload, persists event, and queues processing', function () {
     Queue::fake();
 
-    $workspace = Workspace::query()->create([
-        'name' => 'Acme',
-        'slug' => 'acme',
-    ]);
+    $workspace = Workspace::factory()->create();
 
     $channel = Channel::query()->create([
         'workspace_id' => $workspace->id,

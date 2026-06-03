@@ -1,41 +1,24 @@
 <?php
 
-use App\Events\OutgoingActionCreated;
+use App\Jobs\ExecuteOutgoingActionJob;
 use App\Models\Actor;
 use App\Models\ActorIdentity;
 use App\Models\Automation;
-use App\Models\AutomationStep;
+use App\Models\AutomationRun;
 use App\Models\Channel;
 use App\Models\Interaction;
 use App\Models\OutgoingAction;
 use App\Models\Thread;
 use App\Models\User;
 use App\Models\Workspace;
-use App\Services\AutomationExecutor;
+use App\Services\SocialIntegrationService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 
 uses(RefreshDatabase::class);
 
-it('dispatches outgoing action created with the expected identifiers', function () {
-    Event::fake([OutgoingActionCreated::class]);
-
+it('does not execute terminal outgoing actions again', function () {
     $user = User::factory()->create();
     $workspace = Workspace::factory()->create(['user_id' => $user->id]);
-
-    $automation = Automation::query()->create([
-        'workspace_id' => $workspace->id,
-        'name' => 'Reply automation',
-        'status' => 'active',
-    ]);
-
-    AutomationStep::query()->create([
-        'automation_id' => $automation->id,
-        'step_order' => 1,
-        'step_type' => 'send_message',
-        'configuration' => ['body' => 'Hello there'],
-        'is_active' => true,
-    ]);
 
     $channel = Channel::query()->create([
         'workspace_id' => $workspace->id,
@@ -46,6 +29,15 @@ it('dispatches outgoing action created with the expected identifiers', function 
         'capabilities' => [],
         'settings' => [],
         'is_active' => true,
+    ]);
+
+    $thread = Thread::query()->create([
+        'workspace_id' => $workspace->id,
+        'channel_id' => $channel->id,
+        'thread_key' => 'thread-1',
+        'status' => 'open',
+        'last_interaction_at' => now(),
+        'metadata' => [],
     ]);
 
     $actor = Actor::query()->create([
@@ -63,15 +55,6 @@ it('dispatches outgoing action created with the expected identifiers', function 
         'identity_data' => [],
     ]);
 
-    $thread = Thread::query()->create([
-        'workspace_id' => $workspace->id,
-        'channel_id' => $channel->id,
-        'thread_key' => 'thread-1',
-        'status' => 'open',
-        'last_interaction_at' => now(),
-        'metadata' => [],
-    ]);
-
     $interaction = Interaction::query()->create([
         'workspace_id' => $workspace->id,
         'channel_id' => $channel->id,
@@ -87,14 +70,37 @@ it('dispatches outgoing action created with the expected identifiers', function 
         'metadata' => [],
     ]);
 
-    $run = app(AutomationExecutor::class)->execute($automation, $interaction);
-    $outgoingAction = OutgoingAction::query()->firstOrFail();
+    $automation = Automation::query()->create([
+        'workspace_id' => $workspace->id,
+        'name' => 'Reply automation',
+        'status' => 'active',
+    ]);
 
-    Event::assertDispatched(OutgoingActionCreated::class, function (OutgoingActionCreated $event) use ($outgoingAction, $run, $interaction, $workspace, $channel): bool {
-        return $event->outgoingActionId === $outgoingAction->id
-            && $event->workspaceId === $workspace->id
-            && $event->channelId === $channel->id
-            && $event->automationRunId === $run->id
-            && $event->interactionId === $interaction->id;
-    });
+    $automationRun = AutomationRun::query()->create([
+        'workspace_id' => $workspace->id,
+        'automation_id' => $automation->id,
+        'interaction_id' => $interaction->id,
+        'status' => 'completed',
+        'started_at' => now(),
+        'completed_at' => now(),
+        'summary' => [],
+    ]);
+
+    $outgoingAction = OutgoingAction::query()->create([
+        'workspace_id' => $workspace->id,
+        'channel_id' => $channel->id,
+        'automation_run_id' => $automationRun->id,
+        'interaction_id' => $interaction->id,
+        'action_type' => 'send_message',
+        'payload' => ['body' => 'Hello'],
+        'status' => 'succeeded',
+        'provider_response' => ['provider' => 'fake'],
+    ]);
+
+    (new ExecuteOutgoingActionJob($outgoingAction->id))->handle(app(SocialIntegrationService::class));
+
+    $outgoingAction->refresh();
+
+    expect($outgoingAction->status)->toBe('succeeded')
+        ->and($outgoingAction->provider_response)->toMatchArray(['provider' => 'fake']);
 });

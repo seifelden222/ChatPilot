@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\Queue;
 it('does not duplicate webhook event records or queue jobs for same event id in a channel', function () {
     Queue::fake();
 
-    $workspace = Workspace::query()->create([
-        'name' => 'Acme',
-        'slug' => 'acme',
-    ]);
+    $workspace = Workspace::factory()->create();
 
     $channel = Channel::query()->create([
         'workspace_id' => $workspace->id,

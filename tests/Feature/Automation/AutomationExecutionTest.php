@@ -32,13 +32,7 @@ function makeExecutionWorkspace(): Workspace
 {
     $user = User::factory()->create();
 
-    return Workspace::unguarded(function () use ($user): Workspace {
-        return Workspace::query()->create([
-            'user_id' => $user->id,
-            'name' => 'Acme',
-            'slug' => 'acme-'.fake()->unique()->randomNumber(4),
-        ]);
-    });
+    return Workspace::factory()->create(['user_id' => $user->id]);
 }
 
 function makeInteractionForExecution(Workspace $workspace): Interaction
