@@ -37,12 +37,16 @@ class User extends Authenticatable implements PasskeyUser
     /**
      * Get the user's initials
      */
+    public function workspaces()
+    {
+        return $this->hasMany(Workspace::class);
+    }
     public function initials(): string
     {
         return Str::of($this->name)
             ->explode(' ')
             ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
+            ->map(fn($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
 }
