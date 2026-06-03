@@ -2,11 +2,14 @@
 
 namespace App\Providers;
 
+use App\Events\InteractionCreated;
+use App\Listeners\RunAutomationsForInteraction;
 use App\Models\WebhookEvent;
 use App\Observers\WebhookEventObserver;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 
@@ -28,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         $this->configureDefaults();
 
         WebhookEvent::observe(WebhookEventObserver::class);
+        Event::listen(InteractionCreated::class, RunAutomationsForInteraction::class);
     }
 
     /**
